@@ -43,98 +43,101 @@ class MainActivity : ComponentActivity() {
     val apicaller = ObjectApi.getInstance().create(InterfaceApi::class.java)
     val apikey = apikeyClass().apikeyreturn()
 
-    @SuppressLint("CoroutineCreationDuringComposition")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         connectivityObserver = NetworkConnectivityObserver(applicationContext)
-
         setContent {
-            val status by connectivityObserver.observe().collectAsState(initial = ConnectivityObserver.Status.Unavailable)
-            var errorBool by remember { mutableStateOf(true) }
+            val status by connectivityObserver.observe()
+                .collectAsState(initial = ConnectivityObserver.Status.Available)
+            //var errorBool by remember { mutableStateOf(false) }
             var scope = rememberCoroutineScope()
             var listofResult by remember {
                 mutableStateOf(
                     TrendingResponse(
                         0,
-                        listOf(com.shuklansh.tmdblist.model.Result("", "", "", "", "")),
+                        listOf(com.shuklansh.tmdblist.model.Result("", "Tv/Movie", "Name", "Overview", "Title")),
                         0,
                         0
                     )
                 )
             }
+            if (status.toString() != "Available" ) Dialog(dialogOpenSt = true, status.toString()) else
+                PracticeJCTheme {
+                    // A surface container using the 'background' color from the theme
 
-
-
-            PracticeJCTheme {
-                // A surface container using the 'background' color from the theme
-
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    if(status.toString()!="Available") Dialog(dialogOpenSt = errorBool,status.toString()) else
-                    //if(apikey!=apikeyClass().apikeyreturn()) Dialog(errorhai) else
-                    Column(
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .background(Color.DarkGray)
+                    Surface(
+                        modifier = Modifier.fillMaxSize(),
+                        color = MaterialTheme.colors.background
                     ) {
-                        Spacer(modifier = Modifier.height(12.dp))
-                        Button(
-                            onClick = {
-
-                                scope.launch {
-                                    listofResult = getData(apikey)
-                                    // as MutableList<Result>
-                                }
-
-
-                            },
-                            shape = RoundedCornerShape(500f),
-                            colors = ButtonDefaults.buttonColors(
-                                backgroundColor = Color.Magenta
-                            )
+                        //if(apikey!=apikeyClass().apikeyreturn()) Dialog(errorhai) else
+                        Column(
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .background(Color.DarkGray)
                         ) {
+                            Spacer(modifier = Modifier.height(12.dp))
+                            Button(
+                                onClick = {
 
-                            Text(
-                                text = "What's Trending?",
-                                fontSize = 20.sp,
-                                modifier = Modifier.padding(20.dp),
-                                color = Color.Black
-                            )
-                        }
-
-                        LazyColumn(
-                            modifier = Modifier.fillMaxHeight(0.98f)
-                        )
-                        {
-
-                            items(items = listofResult.results) {
-                                Column(
-                                    modifier = Modifier
-                                        .fillMaxSize()
-                                        .padding(8.dp)
-                                        .clip(RoundedCornerShape(16.dp))
-                                        .background(Color.Black),
-                                ) {
-
-                                    Column(
-                                        modifier = Modifier.padding(21.dp),
-                                        horizontalAlignment = Alignment.CenterHorizontally,
-                                        verticalArrangement = Arrangement.Top
-                                    ) {
-                                        oneCol(listOfResults = it)
+                                    scope.launch {
+                                        listofResult = getData(apikey)
+                                        // as MutableList<Result>
                                     }
 
+
+                                },
+                                shape = RoundedCornerShape(500f),
+                                colors = ButtonDefaults.buttonColors(
+                                    backgroundColor = Color.Magenta
+                                )
+                            ) {
+
+                                Text(
+                                    text = "What's Trending?",
+                                    fontSize = 20.sp,
+                                    modifier = Modifier.padding(20.dp),
+                                    color = Color.Black
+                                )
+                            }
+
+                            LazyColumn(
+                                modifier = Modifier.fillMaxHeight(0.98f)
+                            )
+                            {
+
+                                items(items = listofResult.results) {
+                                    Column(
+                                        modifier = Modifier
+                                            .fillMaxSize()
+                                            .padding(8.dp)
+                                            .clip(RoundedCornerShape(16.dp))
+                                            .background(Color.Black),
+                                    ) {
+                                        Card(
+                                            elevation = 8.dp,
+                                            backgroundColor = Color.Black
+                                        ){
+                                        Column(
+                                            modifier = Modifier.padding(21.dp),
+                                            horizontalAlignment = Alignment.CenterHorizontally,
+                                            verticalArrangement = Arrangement.Top
+                                        ) {
+
+                                                oneCol(listOfResults = it)
+                                            }
+                                        }
+
+                                    }
                                 }
                             }
+
                         }
 
-                    }
 
                 }
+
             }
         }
     }
@@ -143,8 +146,6 @@ class MainActivity : ComponentActivity() {
         val resultOfCall = apicaller.getTrending(apikey)
         return resultOfCall
     }
-
-
 
 
 }

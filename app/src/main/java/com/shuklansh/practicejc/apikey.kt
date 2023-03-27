@@ -3,7 +3,7 @@ package com.shuklansh.practicejc
 class apikeyClass {
 
     fun apikeyreturn():String{
-        val apikey  = "APIKEY"
+        val apikey  = "API KEY"
         return apikey
     }
 

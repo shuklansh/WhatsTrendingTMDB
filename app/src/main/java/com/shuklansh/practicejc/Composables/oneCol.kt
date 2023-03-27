@@ -50,7 +50,7 @@ fun oneCol(listOfResults: com.shuklansh.tmdblist.model.Result) {
 
     AsyncImage(
 
-        model = "https://image.tmdb.org/t/p/w780/" + listOfResults.backdrop_path,
+        model = if (listOfResults.backdrop_path == "") "https://cdn.britannica.com/08/190708-131-EF51F4FE/Woman-container-popcorn-cinema-movie-theater.jpg" else "https://image.tmdb.org/t/p/w780/" + listOfResults.backdrop_path,
         contentDescription = "img",
         modifier = Modifier
             .fillMaxSize()
