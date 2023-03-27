@@ -1,4 +1,4 @@
-package com.shuklansh.practicejc.NetworkConnectivity
+package com.shuklansh.WhatsTrendingTMDB.NetworkConnectivity
 
 import android.content.Context
 import android.net.ConnectivityManager

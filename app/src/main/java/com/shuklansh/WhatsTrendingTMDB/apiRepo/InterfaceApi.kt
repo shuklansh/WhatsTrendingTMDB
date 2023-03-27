@@ -1,4 +1,4 @@
-package com.shuklansh.practicejc.apiRepo
+package com.shuklansh.WhatsTrendingTMDB.apiRepo
 
 import com.shuklansh.tmdblist.model.TrendingResponse
 import retrofit2.Response

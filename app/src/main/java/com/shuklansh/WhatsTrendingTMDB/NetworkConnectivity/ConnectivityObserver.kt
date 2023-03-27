@@ -1,7 +1,6 @@
-package com.shuklansh.practicejc.NetworkConnectivity
+package com.shuklansh.WhatsTrendingTMDB.NetworkConnectivity
 
 import kotlinx.coroutines.flow.Flow
-import java.util.Observer
 
 interface ConnectivityObserver {
 

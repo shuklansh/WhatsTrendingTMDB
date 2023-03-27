@@ -1,4 +1,4 @@
-package com.shuklansh.practicejc.ui.theme
+package com.shuklansh.WhatsTrendingTMDB.ui.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle

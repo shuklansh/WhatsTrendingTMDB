@@ -1,4 +1,4 @@
-package com.shuklansh.practicejc
+package com.shuklansh.WhatsTrendingTMDB
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

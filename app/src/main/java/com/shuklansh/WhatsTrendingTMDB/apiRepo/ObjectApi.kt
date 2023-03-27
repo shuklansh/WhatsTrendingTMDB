@@ -1,4 +1,4 @@
-package com.shuklansh.practicejc.apiRepo
+package com.shuklansh.WhatsTrendingTMDB.apiRepo
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

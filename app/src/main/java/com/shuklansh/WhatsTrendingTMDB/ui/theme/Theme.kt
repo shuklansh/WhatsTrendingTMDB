@@ -1,4 +1,4 @@
-package com.shuklansh.practicejc.ui.theme
+package com.shuklansh.WhatsTrendingTMDB.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme

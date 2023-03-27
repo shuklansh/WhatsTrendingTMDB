@@ -1,8 +1,6 @@
-package com.shuklansh.practicejc
+package com.shuklansh.WhatsTrendingTMDB
 
-import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
@@ -11,8 +9,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.*
 import androidx.compose.runtime.rememberCoroutineScope
@@ -20,22 +16,17 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import coil.compose.AsyncImage
-import com.shuklansh.practicejc.Composables.Dialog
-import com.shuklansh.practicejc.NetworkConnectivity.ConnectivityObserver
-import com.shuklansh.practicejc.NetworkConnectivity.NetworkConnectivityObserver
-import com.shuklansh.practicejc.apiRepo.InterfaceApi
-import com.shuklansh.practicejc.apiRepo.ObjectApi
-import com.shuklansh.practicejc.ui.theme.PracticeJCTheme
+import com.shuklansh.WhatsTrendingTMDB.Composables.Dialog
+import com.shuklansh.WhatsTrendingTMDB.NetworkConnectivity.ConnectivityObserver
+import com.shuklansh.WhatsTrendingTMDB.NetworkConnectivity.NetworkConnectivityObserver
+import com.shuklansh.WhatsTrendingTMDB.apiRepo.InterfaceApi
+import com.shuklansh.WhatsTrendingTMDB.apiRepo.ObjectApi
+import com.shuklansh.WhatsTrendingTMDB.ui.theme.PracticeJCTheme
 import com.shuklansh.tmdblist.model.TrendingResponse
 import com.shuklansh.tmdblist.oneCol
 import kotlinx.coroutines.launch
-import okhttp3.Connection
-import okhttp3.ResponseBody
-import retrofit2.Response
 
 class MainActivity : ComponentActivity() {
 
@@ -70,7 +61,6 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier.fillMaxSize(),
                         color = MaterialTheme.colors.background
                     ) {
-                        //if(apikey!=apikeyClass().apikeyreturn()) Dialog(errorhai) else
                         Column(
                             horizontalAlignment = Alignment.CenterHorizontally,
                             modifier = Modifier
@@ -83,7 +73,6 @@ class MainActivity : ComponentActivity() {
 
                                     scope.launch {
                                         listofResult = getData(apikey)
-                                        // as MutableList<Result>
                                     }
 
 

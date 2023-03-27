@@ -1,4 +1,4 @@
-package com.shuklansh.practicejc
+package com.shuklansh.WhatsTrendingTMDB
 
 import org.junit.Test
 
